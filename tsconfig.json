@@ -1,0 +1,23 @@
+{
+	// Thanks abal! https://github.com/abalabahaha/eris/blob/72859c9aaf8e7349e06879f2266c8b6885de4720/tsconfig.json
+	"compilerOptions": {
+		"target": "es6",
+		"module": "commonjs",
+		"strict": true,
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"noImplicitThis": true,
+		"alwaysStrict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"moduleResolution": "node",
+		"lib": [
+			"es6"
+		]
+	},
+	"files": [
+		"index.d.ts"
+	]
+}

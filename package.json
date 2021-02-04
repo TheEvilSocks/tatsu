@@ -1,0 +1,32 @@
+{
+  "name": "tatsu",
+  "version": "0.1.0",
+  "description": "A NodeJS library for Tatsu. With typings!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheEvilSocks/tatsu.git"
+  },
+  "keywords": [
+    "tatsu",
+    "tatsumaki",
+    "api",
+    "typings",
+    "discord",
+    "discordapp"
+  ],
+  "author": "TheEvilSocks",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TheEvilSocks/tatsu/issues"
+  },
+  "homepage": "https://github.com/TheEvilSocks/tatsu#readme",
+  "devDependencies": {
+    "@types/node": "^14.14.22",
+    "typescript": "^4.1.3"
+  },
+  "typings": "index.d.ts"
+}
