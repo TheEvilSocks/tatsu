@@ -31,7 +31,7 @@ Useful Links
 
 [Tatsu's developer portal](https://dev.tatsu.gg/) contains very detailed information on how their API works, as well as which other libraries are available.
 
-[Tatsu's API channel (#api-support)](https://discord.gg/tatsu) is the best place to get support. Ping me (@TheEvilSocks#0023) for library support.
+[Tatsu's Development channel (#development-chat)](https://discord.gg/tatsu) is the best place to get support. Ping me (@TheEvilSocks#0023) for library support.
  
 License
 ---
