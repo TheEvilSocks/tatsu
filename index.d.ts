@@ -16,18 +16,7 @@ declare namespace Tatsu {
 		user_id: string
 	}
 
-	interface GuildRankings {
-		guild_id: string
-		rankings: GuildRanking[]
-	}
-
-	interface GuildRanking {
-		rank: number
-		score: number
-		user_id: string
-	}
-
-	interface User {
+	interface UserProfile {
 		avatar_url: string
 		credits: number
 		discriminator: string
@@ -53,8 +42,8 @@ declare namespace Tatsu {
 			bucket: BucketOptions
 		}
 		getMemberRanking(guild_id: string, user_id: string): Promise<MemberRanking>
-		getGuildRankings(guild_id: string, offset?: number): Promise<GuildRankings>
-		getProfile(user_id: string): Promise<User>
+		getGuildRankings(guild_id: string, offset?: number): Promise<MemberRanking[]>
+		getProfile(user_id: string): Promise<UserProfile>
 
 	}
 
