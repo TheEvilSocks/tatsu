@@ -17,16 +17,20 @@ declare namespace Tatsu {
 	}
 
 	interface UserProfile {
-		avatar_url: string
-		credits: number
-		discriminator: string
 		id: string
-		info_box: string
-		reputation: number
-		title: string
-		tokens: number
 		username: string
+		discriminator: string
+		avatar_hash: string
+		avatar_url: string
+		level: number
 		xp: number
+		reputation: number
+		credits: number
+		tokens: number
+		title: string
+		info_box: string
+		subscription_type: number
+		subscription_renewal: Date
 	}
 
 	interface BucketOptions {
