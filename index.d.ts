@@ -45,8 +45,19 @@ declare namespace Tatsu {
 		private options: {
 			bucket: BucketOptions
 		}
+
+		/* Alltime Rankings */
 		getMemberRanking(guild_id: string, user_id: string): Promise<MemberRanking>
 		getGuildRankings(guild_id: string, offset?: number): Promise<MemberRanking[]>
+
+		/* Monthly Rankings */
+		getMonthlyMemberRanking(guild_id: string, user_id: string): Promise<MemberRanking>
+		getMonthlyGuildRankings(guild_id: string, offset?: number): Promise<MemberRanking[]>
+
+		/* Weekly Rankings */
+		getWeeklyMemberRanking(guild_id: string, user_id: string): Promise<MemberRanking>
+		getWeeklyGuildRankings(guild_id: string, offset?: number): Promise<MemberRanking[]>
+
 		getProfile(user_id: string): Promise<UserProfile>
 
 	}

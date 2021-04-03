@@ -1,6 +1,6 @@
 {
   "name": "tatsu",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A NodeJS library for Tatsu. With typings!",
   "main": "index.js",
   "scripts": {
