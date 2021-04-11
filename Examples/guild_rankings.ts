@@ -1,4 +1,4 @@
-import * as Tatsu from '../index.js';
+import Tatsu from '../index.js';
 
 const client = Tatsu('API_KEY');
 
