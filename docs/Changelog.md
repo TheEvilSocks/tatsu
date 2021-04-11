@@ -1,6 +1,28 @@
 Changelog
 ===
 
+[0.2.4] 11th of April 2021
+--
+### Changed
+- Exposed UserProfile class
+
+---
+
+[0.2.3] 11th of April 2021
+---
+### Fixed
+- Bucket now properly drips
+    - This means ratelimits are now handled correctly, in the previous version it would count every API request twice.
+
+---
+
+[0.2.2] 3rd of April 2021
+---
+### Changed
+- Added some JSDocs
+
+---
+
 [0.2.1] 3rd of April 2021
 ---
 ### Added
