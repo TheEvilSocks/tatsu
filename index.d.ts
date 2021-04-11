@@ -16,7 +16,9 @@ declare namespace Tatsu {
 		user_id: string
 	}
 
-	interface UserProfile {
+	export class UserProfile {
+		constructor(data: any)
+
 		id: string
 		username: string
 		discriminator: string

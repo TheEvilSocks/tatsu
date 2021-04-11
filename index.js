@@ -1,4 +1,6 @@
 const TatsuClient = require('./lib/Tatsu.js');
+const UserProfile = require('./lib/structures/user.js');
+
 
 /**
 * Create a new API client
@@ -11,4 +13,6 @@ function Tatsu(apiKey, options) {
 	return new TatsuClient(apiKey, options);
 }
 
+
+Tatsu.UserProfile = UserProfile;
 module.exports = Tatsu;
