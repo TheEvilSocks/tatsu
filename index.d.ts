@@ -9,11 +9,19 @@ declare namespace Tatsu {
 		api: RequestOptions
 	}
 
+	interface PartialMemberRanking {
+		guild_id: string
+		score: number
+		user_id: string
+	}
+
 	interface MemberRanking {
 		guild_id: string
 		rank: number
 		score: number
 		user_id: string
+		addScore(score_amount: number): Promise<PartialMemberRanking>
+		removeScore(score_amount: number): Promise<PartialMemberRanking>
 	}
 
 	export class UserProfile {
@@ -61,6 +69,9 @@ declare namespace Tatsu {
 		getWeeklyGuildRankings(guild_id: string, offset?: number): Promise<MemberRanking[]>
 
 		getProfile(user_id: string): Promise<UserProfile>
+
+		addGuildMemberScore(guild_id: string, user_id: string, score_amount: number): Promise<PartialMemberRanking>
+		removeGuildMemberScore(guild_id: string, user_id: string, score_amount: number): Promise<PartialMemberRanking>
 
 	}
 

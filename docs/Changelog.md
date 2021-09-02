@@ -1,31 +1,53 @@
-Changelog
-===
+# Changelog
 
-[0.2.4] 11th of April 2021
---
+## [0.3.0] 2nd of September 2021
+
+### Added
+
+- Add GuildRanking structure
+- Add modify guild member endpoints
+
 ### Changed
+
+- Any guild rankings endpoints now return the GuildRanking class.  
+   _This should not break any existing code._
+
+### Fixed
+
+- Fix errors (haha)
+  - The Tatsu API now returns errors in JSON format, so we should handle them accordingly.
+
+---
+
+## [0.2.4] 11th of April 2021
+
+### Changed
+
 - Exposed UserProfile class
 
 ---
 
-[0.2.3] 11th of April 2021
----
+## [0.2.3] 11th of April 2021
+
 ### Fixed
+
 - Bucket now properly drips
-    - This means ratelimits are now handled correctly, in the previous version it would count every API request twice.
+  - This means ratelimits are now handled correctly, in the previous version it would count every API request twice.
 
 ---
 
-[0.2.2] 3rd of April 2021
----
+## [0.2.2] 3rd of April 2021
+
 ### Changed
+
 - Added some JSDocs
 
 ---
 
-[0.2.1] 3rd of April 2021
----
+## [0.2.1] 3rd of April 2021
+
 ### Added
+
 - Added new endpoints
   - Monthly guild rankings
   - Weekly guild rankings
@@ -35,35 +57,38 @@ Changelog
 [ **!** ] Please note, that at the time of writing this, these endpoints are live, but might not return correct data. This will silently be fixed, as the issue is with the API, not the library.
 
 ### Fixed
+
 - Guild rankings are actually guild rankings now!
 
 ---
 
-[0.2.0] 2nd of April 2021
----
+## [0.2.0] 2nd of April 2021
+
 ### Added
+
 - [Documentation!](https://docs.theevilsocks.com/tatsu/)
 - Added new fields!
   - User.avatar_hash
   - User.level
   - User.subscription_type
   - User.subscription_renewal
-  
 
 ### Changed
+
 - **[BREAKING]** Guild rankings are now just an array of MemberRanking, rather than a complicated object
 - Some inner workings of how objects are constructed
 
 ---
 
-[0.1.1] 5th of February 2021
----
+## [0.1.1] 5th of February 2021
+
 ### Fixed
-- Minor changes  
+
+- Minor changes
 - Fix errors, uhh erroring
 
 ---
 
-[0.1.0] 4th of February 2021
----
+## [0.1.0] 4th of February 2021
+
 Initial Release!
