@@ -1,4 +1,6 @@
 - [Home](/)
 - [Changelog](Changelog.md)
 - [Guild](Guild.md)
+  - [GuildRanking](GuildRanking.md)
+  - [PartialGuildRanking](PartialGuildRanking.md)
 - [User](User.md)

@@ -1,17 +1,4 @@
-## Guild Objects
-
-### MemberRanking
-
-| Field    | Type   | Description                                              |
-| -------- | ------ | -------------------------------------------------------- |
-| guild_id | string | The Discord ID of the guild.                             |
-| user_id  | string | The Discord ID of the user.                              |
-| rank     | number | The user's rank. Will be `-1` if the user has no record. |
-| score    | number | The user's guild score. (Also known as server XP)        |
-
----
-
-## Guild Functions
+## Guild Related Functions
 
 ### #getGuildRankings
 
@@ -22,7 +9,7 @@ Get the rankings of a guild. (Similar to `t!top`)
 | guild_id  | string | The Discord ID of the guild.                         |
 | offset?   | number | Offset the results with `offset` users. Default: `0` |
 
-_returns_ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[MemberRanking](#memberranking)[]>
+_returns_ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[GuildRanking](GuildRanking.md)[]>
 
 #### Example
 
@@ -48,7 +35,7 @@ Get the rankings of a guild, but only count score gained in the last 7 days.
 | guild_id  | string | The Discord ID of the guild.                         |
 | offset?   | number | Offset the results with `offset` users. Default: `0` |
 
-_returns_ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[MemberRanking](#memberranking)[]>
+_returns_ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[GuildRanking](GuildRanking.md)[]>
 
 ### #getMonthlyGuildRankings
 
@@ -59,9 +46,9 @@ Get the rankings of a guild, but only count score gained in the last 30 days.
 | guild_id  | string | The Discord ID of the guild.                         |
 | offset?   | number | Offset the results with `offset` users. Default: `0` |
 
-_returns_ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[MemberRanking](#memberranking)[]>
+_returns_ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[GuildRanking](GuildRanking.md)[]>
 
-### #getMemberRanking
+### #getGuildRanking
 
 Get the ranking of a specific member in a guild. (Similar to `t!rank`)
 
@@ -70,9 +57,9 @@ Get the ranking of a specific member in a guild. (Similar to `t!rank`)
 | guild_id  | string | The Discord ID of the guild. |
 | user_id   | string | The Discord ID of the user.  |
 
-_returns_ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[MemberRanking](#memberranking)>
+_returns_ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[GuildRanking](GuildRanking.md)>
 
-### #getWeeklyMemberRanking
+### #getWeeklyGuildRanking
 
 Get the ranking of a specific member in a guild, but only count score gained in the last 7 days.
 
@@ -81,9 +68,9 @@ Get the ranking of a specific member in a guild, but only count score gained in 
 | guild_id  | string | The Discord ID of the guild. |
 | user_id   | string | The Discord ID of the user.  |
 
-_returns_ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[MemberRanking](#memberranking)>
+_returns_ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[GuildRanking](GuildRanking.md)>
 
-### #getMonthlyMemberRanking
+### #getMonthlyGuildRanking
 
 Get the ranking of a specific member in a guild, but only count score gained in the last 30 days.
 
@@ -92,4 +79,29 @@ Get the ranking of a specific member in a guild, but only count score gained in 
 | guild_id  | string | The Discord ID of the guild. |
 | user_id   | string | The Discord ID of the user.  |
 
-_returns_ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[MemberRanking](#memberranking)>
+_returns_ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[GuildRanking](GuildRanking.md)>
+
+### #addGuildMemberScore
+
+Add score to a member's guild ranking.
+
+| Parameter | Type   | Description                             |
+| --------- | ------ | --------------------------------------- |
+| guild_id  | string | The Discord ID of the guild.            |
+| user_id   | string | The Discord ID of the user.             |
+| score     | number | The amount of score to add to the user. |
+
+_returns_ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[PartialGuildRanking](PartialGuildRanking.md)>
+
+### #removeGuildMemberScore
+
+Remove score from a member's guild ranking.
+
+| Parameter | Type   | Description                             |
+| --------- | ------ | --------------------------------------- |
+| guild_id  | string | The Discord ID of the guild.            |
+| user_id   | string | The Discord ID of the user.             |
+| score     | number | The amount of score to remove from the user. |
+
+_returns_ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[PartialGuildRanking](PartialGuildRanking.md)>
+
