@@ -19,6 +19,7 @@ declare namespace Tatsu {
 		guild_id: string
 		rank: number
 		score: number
+		id: string
 		user_id: string
 		addScore(score_amount: number): Promise<PartialMemberRanking>
 		removeScore(score_amount: number): Promise<PartialMemberRanking>
