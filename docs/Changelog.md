@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.0.1] 9th of January 2022
+Version bump.
+
 ## [1.0.0] 9th of January 2022
 
 Release 1.0.0 brings a rewrite in Typescript. Previously typings were kept in a seperate typings file, but now all codebase is written in Typescript.  
