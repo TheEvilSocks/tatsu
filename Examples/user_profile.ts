@@ -2,7 +2,7 @@ import { Tatsu } from '../index';
 
 const client = new Tatsu('API_KEY');
 
-client.getGuildRankings('173184118492889089').then(gr => {
-	console.log(gr);
+client.getProfile('131904411789164544').then(profile => {
+	console.log(profile);
 }, console.error);
 

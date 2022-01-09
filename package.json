@@ -1,9 +1,14 @@
 {
   "name": "tatsu",
-  "version": "0.3.2",
-  "description": "A NodeJS library for Tatsu. With typings!",
-  "main": "index.js",
+  "version": "1.0.0",
+  "description": "A Typescript library for Tatsu.",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
+    "prepublishOnly": "npm run clean && npm run build",
+    "clean": "rimraf dist",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,9 +29,12 @@
     "url": "https://github.com/TheEvilSocks/tatsu/issues"
   },
   "homepage": "https://github.com/TheEvilSocks/tatsu#readme",
-  "devDependencies": {
-    "@types/node": "^14.17.12",
-    "typescript": "^4.4.2"
+  "dependencies": {
+    "@types/node": "^16.11.19",
+    "typescript": "^4.5.4"
   },
-  "typings": "index.d.ts"
+  "devDependencies": {
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.4.0"
+  }
 }

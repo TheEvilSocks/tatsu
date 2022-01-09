@@ -1,10 +1,7 @@
 {
-	// Thanks abal! https://github.com/abalabahaha/eris/blob/72859c9aaf8e7349e06879f2266c8b6885de4720/tsconfig.json
 	"compilerOptions": {
-		"target": "es6",
 		"module": "commonjs",
 		"strict": true,
-		"noImplicitAny": true,
 		"strictNullChecks": true,
 		"noImplicitThis": true,
 		"alwaysStrict": true,
@@ -12,12 +9,30 @@
 		"noUnusedParameters": true,
 		"noImplicitReturns": true,
 		"noFallthroughCasesInSwitch": true,
+		"esModuleInterop": true,
+		"target": "es2020",
+		"noImplicitAny": true,
 		"moduleResolution": "node",
+		"sourceMap": true,
+		"declaration": true,
+		"resolveJsonModule": true,
+		"outDir": "dist",
+		"baseUrl": ".",
 		"lib": [
-			"es6"
+			"es2020",
+			"esnext"
+		],
+		"paths": {
+			"*": [
+				"node_modules/*"
+			]
+		},
+		"typeRoots": [
+			"./node_modules/@types"
 		]
 	},
-	"files": [
-		"index.d.ts"
+	"include": [
+		"lib/**/*.ts",
+		"index.ts"
 	]
 }

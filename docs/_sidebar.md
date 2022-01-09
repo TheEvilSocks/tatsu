@@ -2,5 +2,5 @@
 - [Changelog](Changelog.md)
 - [Guild](Guild.md)
   - [GuildRanking](GuildRanking.md)
-  - [PartialGuildRanking](PartialGuildRanking.md)
+  - [ModifiedGuildMember](ModifiedGuildMember.md)
 - [User](User.md)

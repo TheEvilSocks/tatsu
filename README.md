@@ -16,15 +16,15 @@ Guild Rankings Example
 ---
 
 ```js
-const Tatsu = require('tatsu');
+const { Tatsu } = require('tatsu');
 
 // Replace API_KEY with your Tatsu API key.
 const client = new Tatsu("API_KEY");
 
 // Get the Guild Rankings of Tatsu's Lounge
 client.getGuildRankings('173184118492889089').then(rankings => {
-	console.log(rankings)
-})
+	console.log(rankings);
+});
 ```
 
 Useful Links
