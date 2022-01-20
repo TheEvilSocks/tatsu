@@ -1,10 +1,11 @@
 import https, { RequestOptions } from 'https';
 import { version } from "../package.json";
 import * as Endpoints from './Endpoints';
-import { IAPIGuildRank, IAPIGuildRanking, IAPIModifiedGuildMember, IAPIUserProfile } from './interfaces/API';
+import { IAPIGuildRank, IAPIGuildRanking, IAPIModifiedGuildMember, IAPIStoreListing, IAPIUserProfile } from './interfaces/API';
 import { GuildRank } from './structures/GuildRank';
 import { GuildRankings } from './structures/GuildRankings';
 import { ModifiedGuildMemberScore } from './structures/ModifiedGuildMemberScore';
+import { StoreListing } from './structures/StoreListing';
 import { UserProfile } from './structures/UserProfile';
 
 
@@ -187,6 +188,13 @@ export class TatsuClient {
 				amount: score_amount,
 			}
 		).then((data) => new ModifiedGuildMemberScore(this, guild_id, data));
+	}
+
+	getStoreListing(listing_id: string): Promise<StoreListing> {
+		return this._queueRequest<IAPIStoreListing>(
+			"GET",
+			Endpoints.GET_STORE_LISTING(listing_id)
+		).then((data) => new StoreListing(data));
 	}
 
 	private _queueRequest<T>(method: string, endpoint: string, data?: any) {

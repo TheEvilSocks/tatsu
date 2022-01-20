@@ -10,6 +10,8 @@ export const GUILD_RANKINGS_WEEK = (guild_id: string, offset?: number) => `${BAS
 export const GUILD_MEMBER_RANKING_MONTH = (guild_id: string, member_id: string) => `${BASE_URL}/guilds/${guild_id}/rankings/members/${member_id}/month`;
 export const GUILD_RANKINGS_MONTH = (guild_id: string, offset?: number) => `${BASE_URL}/guilds/${guild_id}/rankings/month${offset !== undefined ? `?offset=${offset}` : ''}`;
 
-export const MODIFY_GUILD_MEMBER_SCORE = (guild_id: string, member_id: string) => `${BASE_URL}/guilds/${guild_id}/members/${member_id}/score`
+export const MODIFY_GUILD_MEMBER_SCORE = (guild_id: string, member_id: string) => `${BASE_URL}/guilds/${guild_id}/members/${member_id}/score`;
+
+export const GET_STORE_LISTING = (listing_id: string) => `${BASE_URL}/store/listings/${listing_id}`;
 
 export const PROFILE = (user_id: string) => `${BASE_URL}/users/${user_id}/profile`;
