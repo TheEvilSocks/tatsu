@@ -1,12 +1,13 @@
 import https, { RequestOptions } from 'https';
 import { version } from "../package.json";
 import * as Endpoints from './Endpoints';
-import { IAPIGuildRank, IAPIGuildRanking, IAPIModifiedGuildMember, IAPIStoreListing, IAPIUserProfile } from './interfaces/API';
+import { IAPIGuildMemberPoints, IAPIGuildRank, IAPIGuildRanking, IAPIModifiedGuildMember, IAPIStoreListing, IAPIUserProfile } from './interfaces/API';
 import { GuildRank } from './structures/GuildRank';
 import { GuildRankings } from './structures/GuildRankings';
 import { ModifiedGuildMemberScore } from './structures/ModifiedGuildMemberScore';
 import { StoreListing } from './structures/StoreListing';
 import { UserProfile } from './structures/UserProfile';
+import { GuildMemberPoints } from './structures/GuildMemberPoints';
 
 
 export interface BucketOptions {
@@ -72,7 +73,6 @@ export class TatsuClient {
 	 * Get the ranking of a specific member in a guild. (Similar to `t!rank`)
 	 * @param {string} guild_id
 	 * @param {string} user_id
-	 * @returns Promise<MemberRanking>
 	 */
 	getMemberRanking(guild_id: string, user_id: string): Promise<GuildRank> {
 		return this._queueRequest<IAPIGuildRank>(
@@ -84,7 +84,6 @@ export class TatsuClient {
 	 * Get the ranking of a specific member in a guild, but only count score gained in the last 30 days.
 	 * @param {string} guild_id
 	 * @param {string} user_id
-	 * @returns Promise<MemberRanking>
 	 */
 	getMonthlyMemberRanking(guild_id: string, user_id: string): Promise<GuildRank> {
 		return this._queueRequest<IAPIGuildRank>(
@@ -97,7 +96,6 @@ export class TatsuClient {
 	 * Get the ranking of a specific member in a guild, but only count score gained in the last 7 days.
 	 * @param {string} guild_id
 	 * @param {string} user_id
-	 * @returns Promise<MemberRanking>
 	 */
 	getWeeklyMemberRanking(guild_id: string, user_id: string): Promise<GuildRank> {
 		return this._queueRequest<IAPIGuildRank>(
@@ -110,7 +108,6 @@ export class TatsuClient {
 	 * Get the rankings of a guild. (Similar to `t!top`)
 	 * @param {string} guild_id
 	 * @param {number} [offset]
-	 * @returns Promise<MemberRanking[]>
 	 */
 	getGuildRankings(guild_id: string, offset?: number): Promise<GuildRankings> {
 		return this._queueRequest<IAPIGuildRanking>(
@@ -123,7 +120,6 @@ export class TatsuClient {
 	 * Get the rankings of a guild, but only count score gained in the last 30 days.
 	 * @param {string} guild_id
 	 * @param {number} [offset]
-	 * @returns Promise<MemberRanking[]>
 	 */
 	getMonthlyGuildRankings(guild_id: string, offset?: number): Promise<GuildRankings> {
 		return this._queueRequest<IAPIGuildRanking>(
@@ -136,7 +132,6 @@ export class TatsuClient {
 	 * Get the rankings of a guild, but only count score gained in the last 7 days.
 	 * @param {string} guild_id
 	 * @param {number} [offset]
-	 * @returns Promise<MemberRanking[]>
 	 */
 	getWeeklyGuildRankings(guild_id: string, offset?: number): Promise<GuildRankings> {
 		return this._queueRequest<IAPIGuildRanking>(
@@ -148,7 +143,6 @@ export class TatsuClient {
 	/**
 	 * Get the profile of a user. (Similar to `t!profile`)
 	 * @param {string} user_id
-	 * @returns Promise<UserProfile>
 	 */
 	getProfile(user_id: string): Promise<UserProfile> {
 		return this._queueRequest<IAPIUserProfile>("GET", Endpoints.PROFILE(user_id)).then((data) => new UserProfile(data));
@@ -157,9 +151,8 @@ export class TatsuClient {
 	/**
 	 * Add score to a member's guild ranking.
 	 * @param {string} guild_id The ID of the guild in which to modify the user's score
-	 * @param {string} user_id The ID of the member of wich to modify the user's score
+	 * @param {string} user_id The ID of the member of which to modify the user's score
 	 * @param {string} score_amount The amount of score to add
-	 * @return Promise
 	 */
 	addGuildMemberScore(guild_id: string, user_id: string, score_amount: number): Promise<ModifiedGuildMemberScore> {
 		return this._queueRequest<IAPIModifiedGuildMember>(
@@ -175,11 +168,10 @@ export class TatsuClient {
 	/**
 	 * Remove score from a member's guild ranking.
 	 * @param {string} guild_id The ID of the guild in which to modify the user's score
-	 * @param {string} user_id The ID of the member of wich to modify the user's score
+	 * @param {string} user_id The ID of the member of which to modify the user's score
 	 * @param {string} score_amount The amount of score to add
-	 * @return Promise
 	 */
-	removeGuildMemberScore(guild_id: string, user_id: string, score_amount: string): Promise<ModifiedGuildMemberScore> {
+	removeGuildMemberScore(guild_id: string, user_id: string, score_amount: number): Promise<ModifiedGuildMemberScore> {
 		return this._queueRequest<IAPIModifiedGuildMember>(
 			"PATCH",
 			Endpoints.MODIFY_GUILD_MEMBER_SCORE(guild_id, user_id),
@@ -195,6 +187,54 @@ export class TatsuClient {
 			"GET",
 			Endpoints.GET_STORE_LISTING(listing_id)
 		).then((data) => new StoreListing(data));
+	}
+
+	/**
+	 * Get a member's point count.
+	 * @param {string} guild_id The ID of the guild in which to get the user's points
+	 * @param {string} user_id The ID of the member of which to get the user's points
+	 */
+	getGuildMemberPoints(guild_id: string, user_id: string): Promise<GuildMemberPoints> {
+		return this._queueRequest<IAPIGuildMemberPoints>(
+			"GET",
+			Endpoints.GUILD_MEMBER_POINTS(guild_id, user_id)
+		).then((data) => new GuildMemberPoints(this, guild_id, data));
+	}
+
+	/**
+	 * Add points to a member's guild ranking.
+	 * @param {string} guild_id The ID of the guild in which to modify the user's points
+	 * @param {string} user_id The ID of the member of wich to modify the user's points
+	 * @param {string} points_amount The amount of points to add
+	 * @return Promise
+	 */
+	addGuildMemberPoints(guild_id: string, user_id: string, points_amount: number): Promise<GuildMemberPoints> {
+		return this._queueRequest<IAPIGuildMemberPoints>(
+			"PATCH",
+			Endpoints.GUILD_MEMBER_POINTS(guild_id, user_id),
+			{
+				action: 0,
+				amount: points_amount,
+			}
+		).then((data) => new GuildMemberPoints(this, guild_id, data));
+	}
+
+	/**
+	 * Remove points from a member's guild ranking.
+	 * @param {string} guild_id The ID of the guild in which to modify the user's points
+	 * @param {string} user_id The ID of the member of wich to modify the user's points
+	 * @param {string} points_amount The amount of points to add
+	 * @return Promise
+	 */
+	removeGuildMemberPoints(guild_id: string, user_id: string, points_amount: number): Promise<GuildMemberPoints> {
+		return this._queueRequest<IAPIGuildMemberPoints>(
+			"PATCH",
+			Endpoints.GUILD_MEMBER_POINTS(guild_id, user_id),
+			{
+				action: 1,
+				amount: points_amount,
+			}
+		).then((data) => new GuildMemberPoints(this, guild_id, data));
 	}
 
 	private _queueRequest<T>(method: string, endpoint: string, data?: any) {
@@ -268,13 +308,16 @@ export class TatsuClient {
 				}
 			);
 
-			if (!body) return req.end();
-
-			if (typeof body == "object") {
-				req.end(JSON.stringify(body));
+			if (!body) {
+				req.end();
 			} else {
-				req.end(body);
+				if (typeof body == "object") {
+					req.end(JSON.stringify(body));
+				} else {
+					req.end(body);
+				}
 			}
+
 		});
 	}
 }

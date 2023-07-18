@@ -1,14 +1,14 @@
 import util from 'util';
-import { IAPIGuildRank } from "../interfaces/API";
 import { TatsuClient } from "../Tatsu";
+import { IAPIGuildMemberPoints } from "../interfaces/API";
 
-export class GuildRank {
+export class GuildMemberPoints {
 	private _tatsuClient: TatsuClient;
 	private _guild_id: string;
-	private _data: IAPIGuildRank;
+	private _data: IAPIGuildMemberPoints;
 
 
-	constructor(tatsuClient: TatsuClient, guild_id: string, api_obj: IAPIGuildRank) {
+	constructor(tatsuClient: TatsuClient, guild_id: string, api_obj: IAPIGuildMemberPoints) {
 		this._tatsuClient = tatsuClient;
 		this._guild_id = guild_id;
 		this._data = api_obj;
@@ -26,8 +26,8 @@ export class GuildRank {
 		return this._data.rank;
 	}
 
-	get score() {
-		return this._data.score;
+	get points() {
+		return this._data.points;
 	}
 
 	getProfile() {
@@ -37,7 +37,7 @@ export class GuildRank {
 	toJSON() {
 		return {
 			rank: this.rank,
-			score: this.score,
+			points: this.points,
 			user_id: this.user_id,
 			guild_id: this.guild_id
 		}
@@ -48,24 +48,24 @@ export class GuildRank {
 	}
 
 	/**
-	 * Add score to the member's guild ranking.
+	 * Add points to the member
 	 */
-	addScore(score_amount: number) {
-		return this._tatsuClient.addGuildMemberScore(
+	addPoints(point_amount: number) {
+		return this._tatsuClient.addGuildMemberPoints(
 			this.guild_id,
 			this.user_id,
-			score_amount
+			point_amount
 		);
 	}
 
 	/**
-	 * Remove score from the member's guild ranking.
+	 * Remove points from the member
 	 */
-	removeScore(score_amount: number) {
-		return this._tatsuClient.removeGuildMemberScore(
+	removePoints(point_amount: number) {
+		return this._tatsuClient.removeGuildMemberPoints(
 			this.guild_id,
 			this.user_id,
-			score_amount
+			point_amount
 		);
 	}
 }

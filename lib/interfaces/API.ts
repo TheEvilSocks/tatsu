@@ -51,3 +51,10 @@ export interface IAPIStorePrice {
 export enum Currency {
 	CREDITS, TOKENS, EMERALDS, CANDY_CANE, USD, CANDY_CORN
 }
+
+export interface IAPIGuildMemberPoints {
+	guild_id: string;
+	points: number;
+	rank: number;
+	user_id: string;
+}

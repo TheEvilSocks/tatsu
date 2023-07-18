@@ -51,7 +51,7 @@ export class ModifiedGuildMemberScore {
 	/**
 	 * Remove score from the member's guild ranking.
 	 */
-	removeScore(score_amount: string) {
+	removeScore(score_amount: number) {
 		return this._tatsuClient.removeGuildMemberScore(
 			this.guild_id,
 			this.user_id,
