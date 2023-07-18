@@ -240,7 +240,7 @@ export class TatsuClient {
 	private _queueRequest<T>(method: string, endpoint: string, data?: any) {
 		return new Promise<T>((resolve, reject) => {
 			const actualCall = async () => {
-				this._makeRequest<T>(method, endpoint, data).then(resolve, reject);
+				await this._makeRequest<T>(method, endpoint, data).then(resolve, reject);
 			};
 
 			this.requestQueue.push(actualCall);
@@ -257,21 +257,21 @@ export class TatsuClient {
 			return;
 
 		// Check the ratelimit info
-		const ratelimitInfo = this.ratelimitInfo;
-		if (ratelimitInfo.localRemaining > 0) {
+		if (this.ratelimitInfo.localRemaining > 0) {
 			// We're not ratelimited, so we can make more requests
-			let jobs = this.requestQueue.splice(0, ratelimitInfo.localRemaining);
-			ratelimitInfo.localRemaining -= jobs.length;
+			const jobs = this.requestQueue.splice(0, this.ratelimitInfo.localRemaining);
+			this.ratelimitInfo.localRemaining -= jobs.length;
 			await Promise.allSettled(jobs.map((job) => job()));
-			ratelimitInfo.localRemaining = ratelimitInfo.remaining; // Make sure we correct remaining requests
+			if (this.ratelimitInfo.localRemaining > this.ratelimitInfo.remaining)
+				this.ratelimitInfo.localRemaining = this.ratelimitInfo.remaining;
 			return;
 		}
 
 		// We're ratelimited, so we need to wait
-		const waitTime = ratelimitInfo.reset.getTime() - Date.now();
+		const waitTime = this.ratelimitInfo.reset.getTime() - Date.now();
 		setTimeout(() => {
-			this.ratelimitInfo.remaining = ratelimitInfo.limit;
-			this.ratelimitInfo.localRemaining = ratelimitInfo.limit;
+			this.ratelimitInfo.remaining = this.ratelimitInfo.limit;
+			this.ratelimitInfo.localRemaining = this.ratelimitInfo.limit;
 			this._advanceQueue();
 		}, waitTime);
 	}
