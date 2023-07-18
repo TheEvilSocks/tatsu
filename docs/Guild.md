@@ -105,3 +105,37 @@ Remove score from a member's guild ranking.
 
 _returns_ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[ModifiedGuildMember](ModifiedGuildMember.md)>
 
+### #getGuildMemberPoints
+
+Get the amount of points a member has in a guild.
+
+| Parameter | Type   | Description                  |
+| --------- | ------ | ---------------------------- |
+| guild_id  | string | The Discord ID of the guild. |
+| user_id   | string | The Discord ID of the user.  |
+
+_returns_ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[GuildMemberPoints](GuildMemberPoints.md)>
+
+### #addGuildMemberPoints
+
+Add points to a member.
+
+| Parameter | Type   | Description                             |
+| --------- | ------ | --------------------------------------- |
+| guild_id  | string | The Discord ID of the guild.            |
+| user_id   | string | The Discord ID of the user.             |
+| points    | number | The amount of points to add to the user. |
+
+_returns_ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[GuildMemberPoints](GuildMemberPoints.md)>
+
+### #removeGuildMemberPoints
+
+Remove points from a member.
+
+| Parameter | Type   | Description                             |
+| --------- | ------ | --------------------------------------- |
+| guild_id  | string | The Discord ID of the guild.            |
+| user_id   | string | The Discord ID of the user.             |
+| points    | number | The amount of points to remove from the user. |
+
+_returns_ [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[GuildMemberPoints](GuildMemberPoints.md)>

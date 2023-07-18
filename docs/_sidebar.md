@@ -3,4 +3,5 @@
 - [Guild](Guild.md)
   - [GuildRanking](GuildRanking.md)
   - [ModifiedGuildMember](ModifiedGuildMember.md)
+  - [GuildMemberPoints](GuildMemberPoints.md)
 - [User](User.md)
