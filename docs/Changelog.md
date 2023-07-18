@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0] 18th of July 2022
+ - Added points related endpoints
+ - Fixed ratelimiting
+ - Fixed typings for removing score from a guild member
+
+## [1.1.0] 20th of January 2022
+ - Add support for store listings
+
 ## [1.0.1] 9th of January 2022
 Version bump.
 

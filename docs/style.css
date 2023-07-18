@@ -3,7 +3,8 @@
 	--theme-bg: #303236
 }
 
-@import url("https://fonts.googleapis.com/css?family=Inconsolata|Inconsolata-Bold");
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&display=swap');
+
 * {
 	-webkit-font-smoothing: antialiased;
 	-webkit-overflow-scrolling: touch;
@@ -792,7 +793,7 @@ section.cover blockquote>p>a:hover {
 .markdown-section code {
 	background-color: #666;
 	border-radius: 3px;
-	font-family: Inconsolata;
+	font-family: 'Inconsolata', monospace;
 	padding: 0.2em 0.4rem;
 	white-space: nowrap;
 }
@@ -800,7 +801,7 @@ section.cover blockquote>p>a:hover {
 .markdown-section pre {
 	background-color: #666;
 	border-left: 2px solid #111;
-	font-family: Inconsolata;
+	font-family: 'Inconsolata', monospace;
 	font-size: 16px;
 	margin: 0 0 1em 0;
 	overflow: auto;
@@ -878,7 +879,7 @@ section.cover blockquote>p>a:hover {
 	background-color: var(--code-bg);
 	border-radius: 2px;
 	display: block;
-	font-family: Inconsolata;
+	font-family: 'Inconsolata', monospace;
 	line-height: 1.1rem;
 	max-width: inherit;
 	overflow: inherit;
